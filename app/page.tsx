@@ -9,32 +9,45 @@ import { ShapeType, ToggleState } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { Box, Package } from 'lucide-react';
 
+// Initial state yang lengkap sesuai dengan ToggleState
+const initialToggleState: ToggleState = {
+  transparency: false,
+  spaceDiagonal: false,
+  diagonalPlane: false,
+  diagonalPlaneABGH: false,
+  diagonalPlaneDCEF: false,
+  diagonalPlaneDBFH: false,
+  diagonalPlaneACGE: false,
+  
+  // Diagonal bidang individual
+  faceDiagonalAC: false,
+  faceDiagonalBD: false,
+  faceDiagonalEG: false,
+  faceDiagonalFH: false,
+  faceDiagonalAF: false,
+  faceDiagonalBE: false,
+  faceDiagonalDG: false,
+  faceDiagonalCH: false,
+  faceDiagonalBG: false,
+  faceDiagonalCF: false,
+  faceDiagonalAH: false,
+  faceDiagonalDE: false,
+  
+  // Diagonal ruang individual
+  spaceDiagonalAE: false,
+  spaceDiagonalBF: false,
+  spaceDiagonalCG: false,
+  spaceDiagonalDH: false,
+  spaceDiagonalAF: false,
+  spaceDiagonalBE: false,
+  spaceDiagonalDG: false,
+  spaceDiagonalCH: false,
+};
+
 export default function Home() {
   const [shapeType, setShapeType] = useState<ShapeType>('cube');
   const [opacity, setOpacity] = useState(0.12);
-  const [toggles, setToggles] = useState<ToggleState>({
-    transparency: false,
-    spaceDiagonal: false,
-    // HAPUS: faceDiagonal: false, // ← DIHAPUS
-    diagonalPlane: false,
-    diagonalPlaneABGH: false,
-    diagonalPlaneDCEF: false,
-    diagonalPlaneDBFH: false,
-    diagonalPlaneACGE: false,
-    // Tambah state untuk diagonal bidang individual
-    faceDiagonalAC: false,
-    faceDiagonalBD: false,
-    faceDiagonalEG: false,
-    faceDiagonalFH: false,
-    faceDiagonalAF: false,
-    faceDiagonalBE: false,
-    faceDiagonalDG: false,
-    faceDiagonalCH: false,
-    faceDiagonalBG: false,
-    faceDiagonalCF: false,
-    faceDiagonalAH: false,
-    faceDiagonalDE: false,
-  });
+  const [toggles, setToggles] = useState<ToggleState>(initialToggleState);
   
   const [colors, setColors] = useState({
     spaceDiagonal: '#ef4444',
@@ -51,28 +64,7 @@ export default function Home() {
 
   const handleReset = () => {
     setOpacity(0.12);
-    setToggles({
-      transparency: false,
-      spaceDiagonal: false,
-      // HAPUS: faceDiagonal: false, // ← DIHAPUS
-      diagonalPlane: false,
-      diagonalPlaneABGH: false,
-      diagonalPlaneDCEF: false,
-      diagonalPlaneDBFH: false,
-      diagonalPlaneACGE: false,
-      faceDiagonalAC: false,
-      faceDiagonalBD: false,
-      faceDiagonalEG: false,
-      faceDiagonalFH: false,
-      faceDiagonalAF: false,
-      faceDiagonalBE: false,
-      faceDiagonalDG: false,
-      faceDiagonalCH: false,
-      faceDiagonalBG: false,
-      faceDiagonalCF: false,
-      faceDiagonalAH: false,
-      faceDiagonalDE: false,
-    });
+    setToggles(initialToggleState);
     setColors({
       spaceDiagonal: '#ef4444',
       faceDiagonal: '#f59e0b',
@@ -82,28 +74,7 @@ export default function Home() {
 
   const handleShapeChange = (newShape: ShapeType) => {
     setShapeType(newShape);
-    setToggles({
-      transparency: false,
-      spaceDiagonal: false,
-      // HAPUS: faceDiagonal: false, // ← DIHAPUS
-      diagonalPlane: false,
-      diagonalPlaneABGH: false,
-      diagonalPlaneDCEF: false,
-      diagonalPlaneDBFH: false,
-      diagonalPlaneACGE: false,
-      faceDiagonalAC: false,
-      faceDiagonalBD: false,
-      faceDiagonalEG: false,
-      faceDiagonalFH: false,
-      faceDiagonalAF: false,
-      faceDiagonalBE: false,
-      faceDiagonalDG: false,
-      faceDiagonalCH: false,
-      faceDiagonalBG: false,
-      faceDiagonalCF: false,
-      faceDiagonalAH: false,
-      faceDiagonalDE: false,
-    });
+    setToggles(initialToggleState);
   };
 
   const handleColorChange = (type: 'spaceDiagonal' | 'faceDiagonal' | 'diagonalPlane', color: string) => {
